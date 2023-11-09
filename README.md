@@ -12,7 +12,7 @@ Goal of this project is to train a machine learning model on current/time curves
 - (device age)
 ...
 #### Model output:
-The module should produce a function _f(t)_ that describes the path followed by the current for given starting parameters.
+The module should produce parameters for the fixed functional form of the function _f(t)_ which empirically describes the current/time curve for given starting parameters.
 
 
 ## Roadmap
