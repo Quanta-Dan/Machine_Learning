@@ -22,6 +22,15 @@ def exponential_function( t: np.ndarray,parameter_array: np.ndarray )->np.ndarra
     Returns an array with the same shape as t. Function value is calculated element-wise."""    
     result = np.zeros_like(t)
     for i in range(int((parameter_array.shape[0]-1)/2)):
-        result = result +  parameter_array[i] * np.exp((t) * parameter_array[i+1])
+        result = result +  parameter_array[i] * np.exp(-(t) * parameter_array[i+1])
+    result = result + parameter_array[-1]
+    return result
+
+def exponential_function_param_specific( t: np.ndarray,parameter_array: np.ndarray )->np.ndarray:
+    """Evaluate double exponential function A1*e^(t*t1)+A2*e^(t*t2)+j0 over the array of t with given parameters.
+    Returns an array with the same shape as t. Function value is calculated element-wise."""    
+    result = np.zeros_like(t)
+    for i in range(int((parameter_array.shape[0]-1)/2)):
+        result = result +  parameter_array[i]*i * np.exp(-(t) * parameter_array[i+1]*i)
     result = result + parameter_array[-1]
     return result
