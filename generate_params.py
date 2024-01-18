@@ -11,22 +11,12 @@ exponential_count =2
 parameter_count = exponential_count*2+1
 
 load = True
-model_path ='models/2024-01-08_16-14-55_2exp_params_205_points_50/model.keras'
+model_path ='models/2024-01-18_18-37-14_2exp_params_205_points_50/model.h5'
 
 input_filename ="C_4_1000_20231213_14_15_50"
 df = pd.read_csv('measurements/C_4_1000_20231213_14_15_50.csv', sep=', ')
 # df = pd.read_csv('measurements/E_4_20ms_20231103_14_55_46.csv', sep=', ')
 df.head()
-
-
-target_points = 50
-cutoff_current_min = 0
-must_be_growth = False
-must_be_decay = False
-min_gradient =0
-max_final_gradient = 1
-
-
 
 number_of_epochs = 1500
 
@@ -132,7 +122,7 @@ df = df[ ['Pattern','Time','Ch4(mA)','On time', 'Off time']]
 df = df.rename(columns={'Ch4(mA)': 'Current'})
 df_original = df.drop(df.index[:50*10])
 
-for i in  range(10):#range(int(df.shape[0]/50)):
+for i in  range(int(df_original.shape[0]/50)):
     data = df_original.iloc[i*50:(i+1)*50]
 
     x_time = data['Time']-np.min(data['Time'])
@@ -174,17 +164,15 @@ for i in  range(10):#range(int(df.shape[0]/50)):
         # print(param_predicted)
     
     else:
-
-        not_completed.append(i)
         predicted_param_list.append(np.zeros_like(param_predicted))
 
     #print progress    
-    print(i,'/', int(df.shape[0]/50))
+    print(i,'/', int(df_original.shape[0]/50))
 
 
 
 
-df = pd.DataFrame(predicted_param_list)
+df_params = pd.DataFrame(predicted_param_list)
 
 # Save the DataFrame to a CSV file
-df.to_csv('outputs/'+input_filename+'_params.csv', index=False, header=False)
+df_params.to_csv('outputs/'+input_filename+'_params.csv', index=False, header=False)
