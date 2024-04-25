@@ -160,4 +160,6 @@ cython_debug/
 #.idea/
 
 # models/*
-# outputs/*
+
+outputs/x_train_current_60000.npy
+outputs/y_train_60000.npy
