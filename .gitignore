@@ -163,3 +163,15 @@ cython_debug/
 
 outputs/x_train_current_60000.npy
 outputs/y_train_60000.npy
+outputs/x_train_current_linearized.npy
+outputs/x_train_current_normal.npy
+outputs/x_train_current_spiral.npy
+outputs/x_train_current.npy
+outputs/x_train_off_linearized.npy
+outputs/x_train_off_normal.npy
+outputs/x_train_off_spiral.npy
+outputs/x_train_off.npy
+outputs/x_train_on_linearized.npy
+outputs/x_train_on_normal.npy
+outputs/x_train_on_spiral.npy
+outputs/x_train_on.npy
