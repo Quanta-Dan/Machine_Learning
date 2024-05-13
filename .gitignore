@@ -175,3 +175,4 @@ outputs/x_train_on_linearized.npy
 outputs/x_train_on_normal.npy
 outputs/x_train_on_spiral.npy
 outputs/x_train_on.npy
+outputs/patterns/*
