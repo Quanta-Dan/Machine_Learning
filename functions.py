@@ -32,11 +32,17 @@ def pixel_to_signal_array(input:np.ndarray, base_on_time:int, on_time:int, off_t
             # print(i, model_input)
             # print(model.predict(model_input, verbose=0).flatten()) 
             # print(output_current[i,:]  )
-            output_current[i,:] = model.predict(model_input, verbose=0).flatten()
+            try:
+                output_current[i,:] = model.predict(model_input,verbose = 0).flatten()
+            except:
+                output_current[i,:] = model.predict(model_input,).flatten()    
             # print(output_current[i,:])
         else:
             model_input= np.stack([output_current[i-1], on_array[i], off_array[i]], axis=1)
-            output_current[i,:] = model.predict(model_input, verbose=0).flatten()
+            try:
+                output_current[i,:] = model.predict(model_input,verbose = 0).flatten()
+            except:
+                output_current[i,:] = model.predict(model_input,).flatten()
         print(f'{i}/{input.shape[0]}', end='\r')      
              
 
