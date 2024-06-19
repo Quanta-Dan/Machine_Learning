@@ -2,6 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def pixel_to_signal_array(input:np.ndarray, base_on_time:int, on_time:int, off_time:int, modulation:float, max_int:int, linearize = False):
+    """
+    input ndarray needs to be of shape (x,1)
+    """
     global model, baseline_current
     if linearize:
         input = input.reshape(-1, input.shape[-1]**2)
